@@ -1,0 +1,61 @@
+<component name="libraryTable">
+  <library name="ant-1.9.6">
+    <CLASSES>
+      <root url="jar://E:/JAR/ssm/ant-1.9.6.jar!/" />
+      <root url="jar://E:/JAR/ssm/ant-launcher-1.9.6.jar!/" />
+      <root url="jar://E:/JAR/ssm/asm-5.2.jar!/" />
+      <root url="jar://E:/JAR/ssm/cglib-3.2.5.jar!/" />
+      <root url="jar://E:/JAR/ssm/common-annotations.jar!/" />
+      <root url="jar://E:/JAR/ssm/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://E:/JAR/ssm/commons-collections-3.2.1.jar!/" />
+      <root url="jar://E:/JAR/ssm/commons-fileupload-1.3.3.jar!/" />
+      <root url="jar://E:/JAR/ssm/commons-io-2.6.jar!/" />
+      <root url="jar://E:/JAR/ssm/commons-logging-1.2.jar!/" />
+      <root url="jar://E:/JAR/ssm/commons-pool2-2.5.0.jar!/" />
+      <root url="jar://E:/JAR/ssm/druid-1.1.9.jar!/" />
+      <root url="jar://E:/JAR/ssm/ezmorph-1.0.6.jar!/" />
+      <root url="jar://E:/JAR/ssm/jackson-annotations-2.9.4.jar!/" />
+      <root url="jar://E:/JAR/ssm/jackson-core-2.9.4.jar!/" />
+      <root url="jar://E:/JAR/ssm/jackson-databind-2.9.4.jar!/" />
+      <root url="jar://E:/JAR/ssm/javassist-3.22.0-CR2.jar!/" />
+      <root url="jar://E:/JAR/ssm/log4j-1.2.17.jar!/" />
+      <root url="jar://E:/JAR/ssm/log4j-api-2.3.jar!/" />
+      <root url="jar://E:/JAR/ssm/log4j-core-2.3.jar!/" />
+      <root url="jar://E:/JAR/ssm/mybatis-3.4.5.jar!/" />
+      <root url="jar://E:/JAR/ssm/mybatis-spring-1.3.1.jar!/" />
+      <root url="jar://E:/JAR/ssm/mysql-connector-java-5.1.45-bin.jar!/" />
+      <root url="jar://E:/JAR/ssm/ognl-3.1.15.jar!/" />
+      <root url="jar://E:/JAR/ssm/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://E:/JAR/ssm/slf4j-log4j12-1.7.25.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-aop-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-aspects-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-beans-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-context-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-context-indexer-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-context-support-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-core-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-expression-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-instrument-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-jcl-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-jdbc-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-jms-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-messaging-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-orm-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-oxm-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-test-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-tx-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-web-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-webflux-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-webmvc-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/ssm/spring-websocket-5.0.3.RELEASE.jar!/" />
+      <root url="jar://E:/JAR/aspectj-1.9.2.RC3/lib/aspectjweaver.jar!/" />
+      <root url="jar://E:/JAR/aspectjrt-1.6.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../tomcat9/lib/tomcat-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../tomcat9/lib/servlet-api.jar!/" />
+      <root url="jar://E:/JAR/jdom/build/jdom-1.1.3.jar!/" />
+      <root url="jar://E:/JAR/fastjson-1.1.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

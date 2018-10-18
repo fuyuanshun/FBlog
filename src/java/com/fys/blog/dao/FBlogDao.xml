@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fys.blog.dao.FBlogDao">
+    <select id="selectUser" resultType="User">
+        select username, nickname, last_login, birthday from user;
+    </select>
+</mapper>
