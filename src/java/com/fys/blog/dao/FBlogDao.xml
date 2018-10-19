@@ -18,4 +18,10 @@
     <select id="userIsExist" resultType="String" parameterType="String">
         select username from user where username = #{username}
     </select>
+
+    <!-- 查询用户名和密码是否存在于同一条记录中，用于登陆 -->
+    <select id="login" parameterType="String" resultType="String">
+        select id,username,password,nickname,last_login,blog_id,birthday from user where
+        username = #{username} and password = #{password}
+    </select>
 </mapper>

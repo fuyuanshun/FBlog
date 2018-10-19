@@ -52,4 +52,15 @@ public class FBlogServiceImpl implements FBlogService {
             return "用户名已经存在";
         }
     }
+
+    /**
+     **用户登录，查询用户名和密码是否存在
+     * @param username 用户名
+     * @param password 密码
+     * @return
+     */
+    @Override
+    public String login(String username, String password) {
+        return fBlogDao.login(username, password);
+    }
 }

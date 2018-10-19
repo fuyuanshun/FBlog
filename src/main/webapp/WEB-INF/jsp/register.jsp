@@ -14,13 +14,18 @@
     <script src="${pageContext.request.contextPath}/js/project/register.js"></script>
 </head>
 <style>
-    .login-center {
+    .register-center {
         height: 100vh;
     }
 </style>
 <body>
     <div class="container">
-        <div class="row align-items-center justify-content-center login-center">
+        <div>
+            <a href="${pageContext.request.contextPath}/">
+                <img src="${pageContext.request.contextPath}/images/ioc.png">
+            </a>
+        </div>
+        <div class="row align-items-center justify-content-center register-center">
             <form action="" method="POST" id="registerForm">
                 <h4 class="text-center">用户注册</h4>
                 <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required onblur="checkUser()"/>

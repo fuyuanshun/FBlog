@@ -2,6 +2,7 @@ package com.fys.blog.controller;
 
 import com.fys.blog.pojo.User;
 import com.fys.blog.service.FBlogService;
+import com.fys.blog.util.CheckInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,14 @@ public class FBlogController {
     @RequestMapping("/register")
     public String register() {
         return "register";
+    }
+
+    /**
+     * 用户登陆页面
+     */
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
     }
 
     /**
@@ -66,5 +75,31 @@ public class FBlogController {
     @ResponseBody
     public String checkUserIsExist(HttpServletRequest req, @RequestParam("username")String username) {
         return fBlogService.checkUserIsExist(username);
+    }
+
+    /**
+     * 用户登陆处理
+     */
+    @RequestMapping("/loginDeal")
+    @ResponseBody
+    public String loginDeal(HttpServletRequest req, @RequestParam("username")String username, @RequestParam("password")String password) {
+        if (!isNullOrWhile(username) && !isNullOrWhile(password)) {
+            if (null == fBlogService.login(username, password)) {
+                return "用户名和密码不匹配!";
+            } else {
+                req.getSession().setAttribute("username", username);
+                return "success";
+            }
+        }
+        return "用户名和密码不能为空！";
+    }
+
+    /**
+     * 用户退出登录
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest req) {
+        req.getSession().removeAttribute("username");
+        return "index";
     }
 }

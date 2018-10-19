@@ -37,11 +37,11 @@ $(function () {
     })
 
     $("#registerForm").validate({
-        errorPlacement: function(error, element) {
+        errorPlacement: function (error, element) {
             $(element)
-                .closest( "form" )
-                .find( "label[for='" + element.attr( "id" ) + "']" )
-                .append( error );
+                .closest("form")
+                .find("label[for='" + element.attr("id") + "']")
+                .append(error);
         },
         errorElement: "span",
         rules: {
@@ -51,7 +51,7 @@ $(function () {
             },
             password: {
                 required: true,
-                checkUsername : true
+                checkUsername: true
             },
             confirmPassword: {
                 required: true,
@@ -68,7 +68,7 @@ $(function () {
             },
             password: {
                 required: "请输入密码",
-                checkUsername : "请输入最少八位的密码"
+                checkUsername: "请输入最少八位的密码"
             },
             confirmPassword: {
                 required: "请再次输入您的密码",
@@ -82,16 +82,16 @@ $(function () {
 })
 
 
-function checkUser(){
+function checkUser() {
     var username = $("#username").val();
     if (!(/^[0-9a-zA-Z_\*\+\@\!\#]{8,15}$/.test(username.trim()))) {
-       return;
+        return;
     }
     $.ajax({
-        url : "/FBlog/checkUserIsExist",
-        async : true,
-        type : "POST",
-        data : "username=" + username,
+        url: "/FBlog/checkUserIsExist",
+        async: true,
+        type: "POST",
+        data: "username=" + username,
         success: function (data) {
             if (data === "用户名可以使用") {
                 $("#usernameLabel").attr("class", "text-success");
