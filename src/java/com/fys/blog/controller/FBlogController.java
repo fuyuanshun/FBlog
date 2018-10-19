@@ -1,8 +1,7 @@
 package com.fys.blog.controller;
 
-import com.fys.blog.pojo.User;
+import com.fys.blog.pojo.Blog;
 import com.fys.blog.service.FBlogService;
-import com.fys.blog.util.CheckInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import static com.fys.blog.util.CheckInfo.isNullOrWhile;
 
@@ -20,7 +20,9 @@ public class FBlogController {
     private FBlogService fBlogService;
 
     @RequestMapping("/")
-    public String index() {
+    public String index(HttpServletRequest req, HttpServletResponse resp) {
+        List<Blog> blogs = fBlogService.selectBlog();
+        req.setAttribute("blogs", blogs);
         return "index";
     }
 
@@ -77,6 +79,11 @@ public class FBlogController {
         return "index";
     }
 
+    /**
+     * 异步查询社区昵称是否已经存在
+     * @param nickname 社区昵称
+     * @return
+     */
     @RequestMapping("/checkNickname")
     @ResponseBody
     public String checkNickname(@RequestParam("nickname")String nickname) {
@@ -87,5 +94,10 @@ public class FBlogController {
             }
         }
         return "该社区昵称已经存在";
+    }
+
+    @RequestMapping("/post")
+    public String post(@RequestParam("id")String id) {
+        return "";
     }
 }

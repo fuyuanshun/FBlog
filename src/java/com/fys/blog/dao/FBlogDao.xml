@@ -6,6 +6,23 @@
         select username, nickname, last_login, birthday from user;
     </select>
 
+    <!-- 查询所有的贴子 -->
+    <resultMap id="BlogsMap" type="Blog">
+        <result property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="user_id" column="nickname" />
+        <result property="post_time" column="post_time" />
+        <!--<association property="user" javaType="User">-->
+           <!--<id property="id" column="id"/>-->
+           <!--<result property="nickname" column="nickname"/>-->
+        <!--</association>-->
+    </resultMap>
+
+    <select id="selectBlog" resultMap="BlogsMap" parameterType="Blog">
+      select blog.id, blog.title, blog.content, user.nickname, blog.post_time from blog join user on blog.user_id = user.id;
+    </select>
+
     <!-- 用户注册 -->
     <insert id="register" parameterType="User" >
         insert into user

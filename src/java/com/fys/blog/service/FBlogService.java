@@ -1,5 +1,6 @@
 package com.fys.blog.service;
 
+import com.fys.blog.pojo.Blog;
 import com.fys.blog.pojo.User;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,6 +14,11 @@ public interface FBlogService {
      * @return
      */
     List<User> selectUser();
+
+    /**
+     * 查询所有的贴子
+     */
+    List<Blog> selectBlog();
 
     /**
      * 用户注册

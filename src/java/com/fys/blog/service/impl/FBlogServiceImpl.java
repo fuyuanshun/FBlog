@@ -1,6 +1,7 @@
 package com.fys.blog.service.impl;
 
 import com.fys.blog.dao.FBlogDao;
+import com.fys.blog.pojo.Blog;
 import com.fys.blog.pojo.User;
 import com.fys.blog.service.FBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,16 @@ public class FBlogServiceImpl implements FBlogService {
     @Override
     public List<User> selectUser() {
         return fBlogDao.selectUser();
+    }
+
+
+    /**
+     * 查询所有的贴子
+     * @return
+     */
+    @Override
+    public List<Blog> selectBlog() {
+        return fBlogDao.selectBlog();
     }
 
     /**

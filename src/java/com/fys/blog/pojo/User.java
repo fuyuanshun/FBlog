@@ -1,12 +1,22 @@
 package com.fys.blog.pojo;
 
 public class User {
-    String username;
-    String password;
-    String nickname;
-    String lastLogin;
-    String blogId;
-    String birthday;
+    private String id;
+    private String username;
+    private String password;
+    private String nickname;
+    private String lastLogin;
+    private String blogId;
+    private String birthday;
+    private Blog blog;
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
 
     public User() {
 
@@ -17,6 +27,14 @@ public class User {
         this.password = password;
         this.nickname = nickname;
         this.birthday = birthday;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
