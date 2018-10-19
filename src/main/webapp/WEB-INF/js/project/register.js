@@ -82,7 +82,10 @@ $(function () {
 })
 
 
-function checkUser() {
+/**
+ * 检查用户名是否已经被使用
+ */
+function checkUsername() {
     var username = $("#username").val();
     if (!(/^[0-9a-zA-Z_\*\+\@\!\#]{8,15}$/.test(username.trim()))) {
         return;
@@ -99,6 +102,31 @@ function checkUser() {
             } else {
                 $("#usernameLabel").attr("class", "text-danger");
                 $("#usernameLabel").text(data);
+            }
+        }
+    })
+}
+
+/**
+ * 检查社区昵称是否已经被使用
+ */
+function checkNickname() {
+    var nickname = $("#nickname").val();
+    if (!(/(^[a-zA-Z]{4,10}$)|(^\S{2,4}$)/.test(nickname.trim()))) {
+        return;
+    }
+    $.ajax({
+        url: "/FBlog/checkNickname",
+        async: true,
+        type: "POST",
+        data: "nickname=" + nickname,
+        success: function (data) {
+            if (data === "该社区昵称可以使用") {
+                $("#nicknameLabel").attr("class", "text-success");
+                $("#nicknameLabel").text(data);
+            } else {
+                $("#nicknameLabel").attr("class", "text-danger");
+                $("#nicknameLabel").text(data);
             }
         }
     })

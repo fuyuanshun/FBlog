@@ -63,4 +63,41 @@ public class FBlogServiceImpl implements FBlogService {
     public String login(String username, String password) {
         return fBlogDao.login(username, password);
     }
+
+    /**
+     * 更新用户最后一次登陆的时间
+     * @param username 需要更新的用户名
+     */
+    @Override
+    public void updateLoginTime(String username) {
+        fBlogDao.updateLoginTime(username);
+    }
+
+    /**
+     * 根据用户名查询用户的社区名称
+     * @param username 用户名
+     * @return
+     */
+    @Override
+    public String selectNameByUsername(String username) {
+        return fBlogDao.selectNameByUsername(username);
+    }
+
+    /**
+     * 查询一个社区昵称是否已经存在
+     * @param nickname 社区昵称
+     * @return
+     */
+    @Override
+    public String checkNickname(String nickname) {
+        return fBlogDao.checkNickname(nickname);
+    }
+
+    /**
+     * 查询社区昵称和密码是否在同一条记录中，用于登陆
+     */
+    @Override
+    public String login_nickname(String nickname, String password) {
+        return fBlogDao.login_nickname(nickname, password);
+    }
 }

@@ -84,11 +84,19 @@ public class FBlogController {
     @ResponseBody
     public String loginDeal(HttpServletRequest req, @RequestParam("username")String username, @RequestParam("password")String password) {
         if (!isNullOrWhile(username) && !isNullOrWhile(password)) {
-            if (null == fBlogService.login(username, password)) {
-                return "用户名和密码不匹配!";
+            if (null != fBlogService.login(username, password) || null != fBlogService.login_nickname(username, password)) {
+                if (null == fBlogService.selectNameByUsername(username)) {
+                    req.getSession().setAttribute("nickName", username);
+                    fBlogService.updateLoginTime(username);
+                    return "success";
+                } else {
+                    String nickName = fBlogService.selectNameByUsername(username);
+                    req.getSession().setAttribute("nickName", nickName);
+                    fBlogService.updateLoginTime(username);
+                    return "success";
+                }
             } else {
-                req.getSession().setAttribute("username", username);
-                return "success";
+                return "用户名和密码不匹配!";
             }
         }
         return "用户名和密码不能为空！";
@@ -99,12 +107,19 @@ public class FBlogController {
      */
     @RequestMapping("/logout")
     public String logout(HttpServletRequest req) {
-        req.getSession().removeAttribute("username");
+        req.getSession().removeAttribute("nickName");
         return "index";
     }
 
-    @RequestMapping("/header")
-    public String header() {
-        return "header";
+    @RequestMapping("/checkNickname")
+    @ResponseBody
+    public String checkNickname(@RequestParam("nickname")String nickname) {
+        if (!isNullOrWhile(nickname)) {
+            String nickName = fBlogService.checkNickname(nickname);
+            if (nickName == null) {
+                return "该社区昵称可以使用";
+            }
+        }
+        return "该社区昵称已经存在";
     }
 }

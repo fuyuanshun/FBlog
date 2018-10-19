@@ -24,4 +24,25 @@
         select id,username,password,nickname,last_login,blog_id,birthday from user where
         username = #{username} and password = #{password}
     </select>
+
+    <!-- 更新用户的最后一次登陆时间 -->
+    <update id="updateLoginTime" parameterType="String">
+        update user set last_login = now() where username = #{username}
+    </update>
+
+    <!-- 根据用户名查询用户的社区名称 -->
+    <select id="selectNameByUsername" parameterType="String" resultType="String">
+        select nickname from user where username = #{username};
+    </select>
+
+    <!-- 查询一个社区昵称是否已经存在 -->
+    <select id="checkNickname" parameterType="String" resultType="String">
+        select nickname from user where nickname = #{nickname};
+    </select>
+
+    <!-- 查询社区昵称和密码是否在同一条记录中，用于登陆-->
+    <select id="login_nickname" parameterType="String" resultType="String">
+        select id,nickname,password,nickname,last_login,blog_id,birthday from user where
+        nickname = #{nickname} and password = #{password}
+    </select>
 </mapper>
