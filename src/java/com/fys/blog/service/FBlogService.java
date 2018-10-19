@@ -1,7 +1,10 @@
 package com.fys.blog.service;
 
 import com.fys.blog.pojo.User;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface FBlogService {
@@ -15,6 +18,16 @@ public interface FBlogService {
      * 用户注册
      */
     void register(User user);
+
+    /**
+     * 用户注册处理
+     * @param req
+     * @param username 用户名
+     * @param password 用户密码
+     * @param confirmPassword 确认密码
+     * @param nickname 社区昵称
+     */
+    String registerDeal(HttpServletRequest req, String username, String password, String confirmPassword, String nickname);
 
     /**
      * 通过用户名查询用户是否已经存在
@@ -35,6 +48,15 @@ public interface FBlogService {
      * @return
      */
     String login(String username, String password);
+
+    /**
+     * 用户登录处理
+     * @param req
+     * @param username 用户名
+     * @param password 密码
+     * @return
+     */
+    String loginDeal(HttpServletRequest req, HttpServletResponse resp, String username, String password);
 
     /**
      * 更新用户的最后一次登陆时间

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import static com.fys.blog.util.CheckInfo.isNullOrWhile;
 
@@ -46,26 +47,7 @@ public class FBlogController {
     @RequestMapping("/registerDeal")
     @ResponseBody
     public String registerDeal(HttpServletRequest req, @RequestParam("username")String username, @RequestParam("password")String password, @RequestParam("confirmPassword") String confirmPassword, @RequestParam("nickname")String nickname) {
-        String year = req.getParameter("year");
-        String month = req.getParameter("month");
-        String day = req.getParameter("day");
-        String birthday = null;
-        //保证用户提交的信息不为空，初始化生日变量
-        if (!isNullOrWhile(year) && !isNullOrWhile(month) && !isNullOrWhile(day)) {
-            birthday = year + "-" + month + "-" + day;
-        }
-        //保证用户提交的其他信息不为空，存储到数据库
-        if (!isNullOrWhile(username) && !isNullOrWhile(password) && !isNullOrWhile(confirmPassword) && !isNullOrWhile(nickname) && !isNullOrWhile(birthday) && confirmPassword.equals(password)) {
-            if (null == fBlogService.userIsExist(username)) {
-                User user = new User(username, password, nickname, birthday);
-                fBlogService.register(user);
-                return "success";
-            } else {
-                return "用户名已经存在！";
-            }
-        } else {
-            return "请检查是否有选项为空";
-        }
+        return fBlogService.registerDeal(req, username, password, confirmPassword, nickname);
     }
 
     /**
@@ -82,24 +64,8 @@ public class FBlogController {
      */
     @RequestMapping("/loginDeal")
     @ResponseBody
-    public String loginDeal(HttpServletRequest req, @RequestParam("username")String username, @RequestParam("password")String password) {
-        if (!isNullOrWhile(username) && !isNullOrWhile(password)) {
-            if (null != fBlogService.login(username, password) || null != fBlogService.login_nickname(username, password)) {
-                if (null == fBlogService.selectNameByUsername(username)) {
-                    req.getSession().setAttribute("nickName", username);
-                    fBlogService.updateLoginTime(username);
-                    return "success";
-                } else {
-                    String nickName = fBlogService.selectNameByUsername(username);
-                    req.getSession().setAttribute("nickName", nickName);
-                    fBlogService.updateLoginTime(username);
-                    return "success";
-                }
-            } else {
-                return "用户名和密码不匹配!";
-            }
-        }
-        return "用户名和密码不能为空！";
+    public String loginDeal(HttpServletRequest req, HttpServletResponse resp, @RequestParam("username")String username, @RequestParam("password")String password) {
+        return fBlogService.loginDeal(req, resp, username, password);
     }
 
     /**

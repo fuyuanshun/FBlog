@@ -32,21 +32,21 @@ $(function () {
         rules: {
             username: {
                 required: true,
-                maxlength : 8
+                minlength : 8
             },
             password: {
                 required: true,
-                maxlength : 8
+                minlength : 8
             }
         },
         messages: {
             username: {
                 required: "请输入用户名",
-                maxlength : "请输入至少八位用户名"
+                minlength : "请输入至少八位用户名"
             },
             password: {
                 required: "请输入密码",
-                maxlength : "密码至少为八位字符"
+                minlength : "密码至少为八位字符"
             }
         }
     })
