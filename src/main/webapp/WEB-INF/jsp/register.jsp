@@ -1,14 +1,9 @@
 <%@   page contentType="text/html;charset=utf-8" %>
 <%@ page pageEncoding="utf-8" %>
+<%@include file="header.jsp"%>
 <html>
 <head>
     <title>注册</title>
-    <%--jquery--%>
-    <script src="${pageContext.request.contextPath}/js/jquery/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery/jquery.validate.js"></script>
-    <%--bootstrap--%>
-    <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
-    <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <%-- js --%>
     <script src="${pageContext.request.contextPath}/js/project/birthdayByJS.js"></script>
     <script src="${pageContext.request.contextPath}/js/project/register.js"></script>
@@ -20,11 +15,6 @@
 </style>
 <body>
     <div class="container">
-        <div>
-            <a href="${pageContext.request.contextPath}/">
-                <img src="${pageContext.request.contextPath}/images/ioc.png">
-            </a>
-        </div>
         <div class="row align-items-center justify-content-center register-center">
             <form action="" method="POST" id="registerForm">
                 <h4 class="text-center">用户注册</h4>

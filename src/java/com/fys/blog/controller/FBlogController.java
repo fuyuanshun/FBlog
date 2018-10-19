@@ -102,4 +102,9 @@ public class FBlogController {
         req.getSession().removeAttribute("username");
         return "index";
     }
+
+    @RequestMapping("/header")
+    public String header() {
+        return "header";
+    }
 }
