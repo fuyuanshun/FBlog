@@ -23,11 +23,14 @@
         <div class="row align-items-center justify-content-center login-center">
             <form action="" method="POST" id="registerForm">
                 <h4 class="text-center">用户注册</h4>
-                <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required/><br>
-                <input type="text" id="password" name="password" class="form-control" placeholder="密码" required/><br>
-                <input type="text" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="确认密码" required/><br>
-                <input type="text" id="nickname" name="nickname" class="form-control" placeholder="您的社区昵称" required/><br>
-
+                <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required onblur="checkUser()"/>
+                <label for="username" id="usernameLabel" class="text-danger"></label><br>
+                <input type="password" id="password" name="password" class="form-control" placeholder="密码" required/>
+                <label for="password" class="text-danger"></label><br>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="确认密码" required/>
+                <label for="confirmPassword" class="text-danger"></label><br>
+                <input type="text" id="nickname" name="nickname" class="form-control" placeholder="您的社区昵称" required/>
+                <label for="nickname" class="text-danger"></label><br>
                 <span>出生日期:</span>
                 <select onchange="setDays()" id="year" name="year" required>
                 </select>
