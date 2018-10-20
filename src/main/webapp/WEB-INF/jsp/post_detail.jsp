@@ -24,8 +24,9 @@
         <textarea rows="15" cols="150" readonly>
             <%=post.getContent()%>
         </textarea>
-        <button class="btn-primary btn-lg float-right">回复</button>
-        <button type="submit" id="delete" class="btn-danger btn-lg float-right" value="id=<%=post.getId()%>" id="delete">删除主题</button>
+        <button type="button" class="btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal" id="button">回复</button>
+        <%if(("admin".equals(level)) || (post.getUser_id().equals(nickName))){%>
+        <button type="submit" id="delete" class="btn-danger btn-lg float-right" value="id=<%=post.getId()%>" id="delete">删除</button><%}%>
     </div>
     <div>
         <%
@@ -47,6 +48,38 @@
                 }
             }
         %>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">回复帖子: <%=post.getTitle()%></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <div>
+                    <input type="hidden" id="id" value="<%=post.getId()%>">
+                    <input type="hidden" id="nickname" value="<%=nickName%>">
+                    <label class="col-form-label">标题:</label>
+                    <input type="text" id="title" class="form-control"/>
+                    <label class="col-form-label">内容:</label><br>
+                    <textarea id="content" rows="20" cols="60">
+                    </textarea>
+                </div>
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-secondary" id="button2">提交</button>
+            </div>
+        </div>
     </div>
 </div>
 </body>

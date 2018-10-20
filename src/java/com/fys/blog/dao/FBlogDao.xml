@@ -92,4 +92,16 @@
     <select id="selectById" parameterType="String" resultType="Post_">
         select * from post_ where root_id = #{id};
     </select>
+
+    <!-- 回复帖子 -->
+    <insert id="addPost" parameterType="String">
+        insert into post_ (title, content, user_id, post_time, root_id)
+        values
+        (#{title}, #{content}, #{user_id}, now(), #{id});
+    </insert>
+
+    <!-- 根据社区昵称查询id -->
+    <select id="selectIdByNickname" parameterType="String" resultType="String">
+        select id from user where nickname = #{nickname};
+    </select>
 </mapper>

@@ -258,4 +258,26 @@ public class FBlogServiceImpl implements FBlogService {
         //删除父节点
         deleteById(id);
     }
+
+    /**
+     *
+     *  回复贴子
+     *
+     * @param id
+     * @param title
+     * @param content
+     * @return
+     */
+    @Override
+    public String addPost(String id, String title, String content, String nickname) {
+        if ("".equals(id) || "".equals(title) || "".equals(content) || "".equals(nickname)) {
+            return "不能为空！";
+        }
+        String user_id = fBlogDao.selectIdByNickname(nickname);
+        if (null != user_id) {
+            fBlogDao.addPost(id, title, content, user_id);
+            return "success";
+        }
+        return "回复失败!";
+    }
 }

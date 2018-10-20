@@ -29,4 +29,31 @@ $(function () {
                 }
             })
         }})
+
+
+    $("#button2").click(function(){
+        var title = $("#title").val();
+        var content = $("#content").val();
+        var id = $("#id").val();
+        var nickname = $("#nickname").val();
+        if (null == title || title === "" || null == content || content === "") {
+            alert("不能为空!");
+            return;
+        }
+        var json = "id=" + id + "&title=" + title + "&content="+content+"&nickname="+nickname;
+        $.ajax({
+            url: "/FBlog/addPost",
+            async : true,
+            data : json,
+            type : "POST",
+            success : function(data){
+                if (data === "success") {
+                    alert("回复成功!");
+                    location.reload();
+                } else {
+                    alert(data);
+                }
+            }
+        });
+    })
 });

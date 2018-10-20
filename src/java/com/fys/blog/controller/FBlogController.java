@@ -123,4 +123,14 @@ public class FBlogController {
         return "删除成功!";
     }
 
+    /**
+     * 添加贴子
+     * @return
+     */
+    @RequestMapping(value="/addPost", method = RequestMethod.POST)
+    @ResponseBody
+    public String addPost(@RequestParam("id")String id, @RequestParam("title")String title, @RequestParam("content")String content, @RequestParam("nickname")String nickname) {
+        return fBlogService.addPost(id, title, content, nickname);
+    }
+
 }

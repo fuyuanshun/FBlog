@@ -105,4 +105,16 @@ public interface FBlogDao {
      * @return
      */
     List<Post_> selectById(String id);
+
+    /**
+     * 回复贴子
+     */
+    void addPost(@Param("id") String id, @Param("title")String title, @Param("content")String content, @Param("user_id")String user_id);
+
+    /**
+     * 根据社区昵称查询id
+     * @param nickname
+     * @return
+     */
+    String selectIdByNickname(String nickname);
 }

@@ -66,5 +66,42 @@
     </table>
 </div>
 
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">确认信息</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <div>
+                    <label class="text-muted">名称:</label>
+                    <input type="text" id="name" class="form-control" readonly>
+                    <label class="col-form-label">宿舍楼:</label>
+                    <input type="text" id="floor" class="form-control" readonly>
+                    <label class="col-form-label">寝室号:</label>
+                    <input type="text" id="room" class="form-control" readonly>
+                    <label class="col-form-label">联系电话:</label>
+                    <input type="text" id="phone" class="form-control" readonly>
+                    <label class="col-form-label">故障信息:</label>
+                    <input <%--cols="30" rows="10"--%> type="text" id="info" class="form-control" readonly />
+                    <span class="text-danger">注: 如想修改信息，请返回上个页面修改</span>
+                </div>
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-secondary" id="button2">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

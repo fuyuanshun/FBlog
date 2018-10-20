@@ -131,4 +131,9 @@ public interface FBlogService {
      * @param id
      */
     void deleteAll(String id);
+
+    /**
+     * 回复贴子
+     */
+    String addPost(String id, String title, String content, String nickname);
 }
