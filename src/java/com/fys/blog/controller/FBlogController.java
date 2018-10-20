@@ -1,6 +1,6 @@
 package com.fys.blog.controller;
 
-import com.fys.blog.pojo.Blog;
+import com.fys.blog.pojo.Post_;
 import com.fys.blog.service.FBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +21,8 @@ public class FBlogController {
 
     @RequestMapping("/")
     public String index(HttpServletRequest req, HttpServletResponse resp) {
-        List<Blog> blogs = fBlogService.selectBlog();
-        req.setAttribute("blogs", blogs);
+        List<Post_> posts = fBlogService.selectPost();
+        req.setAttribute("posts", posts);
         return "index";
     }
 
@@ -98,9 +98,9 @@ public class FBlogController {
 
     @RequestMapping("/post")
     public String post(HttpServletRequest req, @RequestParam("id")String id) {
-        Blog blog = fBlogService.post_detail(id);
-        if (null != blog) {
-            req.setAttribute("blog", blog);
+        Post_ post = fBlogService.post_detail(id);
+        if (null != post) {
+            req.setAttribute("post", post);
         }
         return "post_detail";
     }

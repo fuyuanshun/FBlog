@@ -1,10 +1,10 @@
-<%@ page import="com.fys.blog.pojo.Blog" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.fys.blog.pojo.Post_" %>
 <%@   page contentType="text/html;charset=utf-8" %>
 <%@ page pageEncoding="utf-8" %>
 <%@ include file="header.jsp"%>
 <%
-    List<Blog> blogs = (List<Blog>) request.getAttribute("blogs");
+    List<Post_> posts = (List<Post_>) request.getAttribute("posts");
 %>
 <html>
 <head>
@@ -30,19 +30,19 @@
             <td >内容</td>
             <td >作者</td>
             <td >发帖时间</td>
-            <%if(level.equals("admin")){%>
+            <%if(null != level && level.equals("admin")){%>
             <td>操作</td>
             <%}%>
         </tr>
         <%
-            if (null != blogs) {
-                for (Blog blog : blogs) {%>
+            if (null != posts) {
+                for (Post_ post : posts) {%>
         <tr>
-            <td><a href="${pageContext.request.contextPath}/post?id=<%=blog.getId()%>"><%=blog.getTitle()%></a></td>
-            <td><%=blog.getContent()%></td>
-            <td><a href="#"><%=blog.getUser_id()%></a></td>
-            <td><%=blog.getPost_time()%></td>
-            <%if(level.equals("admin")){%>
+            <td><a href="${pageContext.request.contextPath}/post?id=<%=post.getId()%>"><%=post.getTitle()%></a></td>
+            <td><%=post.getContent()%></td>
+            <td><a href="#"><%=post.getUser_id()%></a></td>
+            <td><%=post.getPost_time()%></td>
+            <%if(null != level && level.equals("admin")){%>
             <td><a href="#">删除</a>&nbsp;<a href="#">置顶</a></td>
             <%}%>
         </tr>

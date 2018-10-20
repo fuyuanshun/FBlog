@@ -1,6 +1,6 @@
 package com.fys.blog.dao;
 
-import com.fys.blog.pojo.Blog;
+import com.fys.blog.pojo.Post_;
 import com.fys.blog.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -19,7 +19,7 @@ public interface FBlogDao {
      * 查询所有的贴子
      * @return
      */
-    List<Blog> selectBlog();
+    List<Post_> selectPost();
 
     /**
      * 用户注册
@@ -73,7 +73,7 @@ public interface FBlogDao {
      * @param id id
      * @return
      */
-    Blog post_detail(String id);
+    Post_ post_detail(String id);
 
 
     /**

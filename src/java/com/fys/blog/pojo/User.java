@@ -8,9 +8,9 @@ public class User {
     private String password;
     private String nickname;
     private String lastLogin;
-    private String blogId;
+    private String postId;
     private String birthday;
-    private List<Blog> blog;
+    private List<Post_> post;
     private String level;
 
     public String getLevel() {
@@ -21,12 +21,12 @@ public class User {
         this.level = level;
     }
 
-    public List<Blog> getBlog() {
-        return blog;
+    public List<Post_> getPost() {
+        return post;
     }
 
-    public void setBlog(List<Blog> blog) {
-        this.blog = blog;
+    public void setPost(List<Post_> post) {
+        this.post = post;
     }
 
     public User() {
@@ -80,12 +80,12 @@ public class User {
         this.lastLogin = lastLogin;
     }
 
-    public String getBlogId() {
-        return blogId;
+    public String getPostId() {
+        return postId;
     }
 
-    public void setBlogId(String blogId) {
-        this.blogId = blogId;
+    public void setPostId(String postId) {
+        this.postId = postId;
     }
 
     public String getBirthday() {
@@ -103,7 +103,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", lastLogin='" + lastLogin + '\'' +
-                ", blogId='" + blogId + '\'' +
+                ", blogId='" + postId + '\'' +
                 ", birthday='" + birthday + '\'' +
                 '}';
     }

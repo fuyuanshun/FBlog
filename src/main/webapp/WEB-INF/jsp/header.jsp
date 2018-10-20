@@ -22,7 +22,7 @@
                 <img src="${pageContext.request.contextPath}/images/ioc.png">
             </a>
 
-            <em>Welcome to FBLog! This is a simple blog site.</em>&nbsp;&nbsp;
+            <em>Welcome to FBLog! This is a simple post site.</em>&nbsp;&nbsp;
             <%if (null == nickName) {%>
             <a href="${pageContext.request.contextPath}/login">登陆</a>
             <%} else {%>尊敬的<%if(level.equals("admin")){%> 管理员<%}else{%>用户<%}%>：<%=nickName%>&nbsp;&nbsp;

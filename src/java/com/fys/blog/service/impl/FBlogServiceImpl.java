@@ -1,7 +1,7 @@
 package com.fys.blog.service.impl;
 
 import com.fys.blog.dao.FBlogDao;
-import com.fys.blog.pojo.Blog;
+import com.fys.blog.pojo.Post_;
 import com.fys.blog.pojo.User;
 import com.fys.blog.service.FBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +35,8 @@ public class FBlogServiceImpl implements FBlogService {
      * @return
      */
     @Override
-    public List<Blog> selectBlog() {
-        return fBlogDao.selectBlog();
+    public List<Post_> selectPost() {
+        return fBlogDao.selectPost();
     }
 
     /**
@@ -197,7 +197,7 @@ public class FBlogServiceImpl implements FBlogService {
      * @return
      */
     @Override
-    public Blog post_detail(String id) {
+    public Post_ post_detail(String id) {
         return fBlogDao.post_detail(id);
     }
 

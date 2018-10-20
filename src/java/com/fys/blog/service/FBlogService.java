@@ -1,8 +1,7 @@
 package com.fys.blog.service;
 
-import com.fys.blog.pojo.Blog;
+import com.fys.blog.pojo.Post_;
 import com.fys.blog.pojo.User;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,7 @@ public interface FBlogService {
     /**
      * 查询所有的贴子
      */
-    List<Blog> selectBlog();
+    List<Post_> selectPost();
 
     /**
      * 用户注册
@@ -95,7 +94,7 @@ public interface FBlogService {
     /**
      * 根据贴子id查询详细贴子
      */
-    Blog post_detail(String id);
+    Post_ post_detail(String id);
 
     /**
      * 根据社区昵称查询权限等级

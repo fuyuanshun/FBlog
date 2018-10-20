@@ -7,7 +7,7 @@
     </select>
 
     <!-- 查询所有的贴子 -->
-    <resultMap id="BlogsMap" type="Blog">
+    <resultMap id="PostsMap" type="Post_">
         <result property="id" column="id" />
         <result property="title" column="title" />
         <result property="content" column="content" />
@@ -17,14 +17,14 @@
            <id property="id" column="id"/>
            <result property="nickname" column="nickname"/>
            <result property="lastLogin" column="last_login"/>
-           <result property="blogId" column="blog_id"/>
+           <result property="postId" column="post_id"/>
            <result property="birthday" column="birthday"/>
            <result property="level" column="level"/>
         </association>
     </resultMap>
 
-    <select id="selectBlog" resultMap="BlogsMap" parameterType="Blog">
-      select blog.id, blog.title, blog.content, user.nickname, blog.post_time, user.level from blog join user on blog.user_id = user.id;
+    <select id="selectPost" resultMap="PostsMap" parameterType="Post_">
+      select post.id, post.title, post.content, user.nickname, post.post_time, user.level from post_ as post join user on post.user_id = user.id;
     </select>
 
     <!-- 用户注册 -->
@@ -42,7 +42,7 @@
 
     <!-- 查询用户名和密码是否存在于同一条记录中，用于登陆 -->
     <select id="login" parameterType="String" resultType="String">
-        select id,username,password,nickname,last_login,blog_id,birthday from user where
+        select id,username,password,nickname,last_login,post_id,birthday from user where
         username = #{username} and password = #{password}
     </select>
 
@@ -63,13 +63,13 @@
 
     <!-- 查询社区昵称和密码是否在同一条记录中，用于登陆-->
     <select id="login_nickname" parameterType="String" resultType="String">
-        select id,nickname,password,nickname,last_login,blog_id,birthday from user where
+        select id,nickname,password,nickname,last_login,post_id,birthday from user where
         nickname = #{nickname} and password = #{password}
     </select>
 
     <!-- 根据id查询贴子详细内容 -->
-    <select id="post_detail" parameterType="String" resultMap="BlogsMap">
-        select b.id, b.title, b.content, u.nickname, post_time, u.last_login, u.blog_id, u.birthday, u.level from blog as b join user as u on b.user_id = u.id where b.id = #{id};
+    <select id="post_detail" parameterType="String" resultMap="PostsMap">
+        select post.id, post.title, post.content, u.nickname, post_time, u.last_login, u.post_id, u.birthday, u.level from post_ as post join user as u on post.user_id = u.id where post.id = #{id};
     </select>
 
     <!-- 根据社区昵称查询用户权限等级 -->

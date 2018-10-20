@@ -1,6 +1,6 @@
 package com.fys.blog.pojo;
 
-public class Blog {
+public class Post_ {
     private String id;
     private String title;
     private String content;
