@@ -24,10 +24,10 @@
     <a href="" class="btn-primary">热门</a>
     <button class="btn-primary">发帖子</button>
 </div>
-<div>
-    <table class="table-hover table-warning" border="1">
+<div class="post-center justify-content-center align-items-center row">
+    <table class="table-hover table-warning table">
         <tr>
-            <td>标题</td>
+            <td class="active">标题</td>
             <td>内容</td>
             <td>作者</td>
             <td>发帖时间</td>

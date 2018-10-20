@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 
 import static com.fys.blog.util.CheckInfo.isNullOrWhile;
@@ -79,7 +77,8 @@ public class FBlogController {
     @RequestMapping("/logout")
     public String logout(HttpServletRequest req) {
         req.getSession().removeAttribute("nickName");
-        return "index";
+        req.getSession().removeAttribute("level");
+        return "redirect:/";
     }
 
     /**
