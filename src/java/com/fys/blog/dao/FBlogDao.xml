@@ -13,6 +13,7 @@
         <result property="content" column="content" />
         <result property="user_id" column="nickname" />
         <result property="post_time" column="post_time" />
+        <result property="root_id" column="root_id" />
         <association property="user" javaType="User">
            <id property="id" column="id"/>
            <result property="nickname" column="nickname"/>
@@ -24,7 +25,7 @@
     </resultMap>
 
     <select id="selectPost" resultMap="PostsMap" parameterType="Post_">
-      select post.id, post.title, post.content, user.nickname, post.post_time, user.level from post_ as post join user on post.user_id = user.id;
+      select post.id, post.title, post.content, user.nickname, post.post_time, post.root_id, user.last_login, user.birthday, user.level from post_ as post join user on post.user_id = user.id;
     </select>
 
     <!-- 用户注册 -->
@@ -81,4 +82,19 @@
     <select id="getLevelByUsername" parameterType="String" resultType="String">
         select level from user where username = #{username};
     </select>
+
+    <!-- 删除贴子 -->
+    <delete id="deletePost" parameterType="String">
+      delete from post_ where id = #{id} and root_id = #{root_id};
+    </delete>
+
+    <!-- 删除所有的子节点 -->
+    <delete id="deleteChild" parameterType="String">
+      delete from post_ where root_id = #{id};
+    </delete>
+
+    <!-- 根据id删除贴子 -->
+    <delete id="deleteById" parameterType="String">
+      delete from post_ where id = #{id};
+    </delete>
 </mapper>

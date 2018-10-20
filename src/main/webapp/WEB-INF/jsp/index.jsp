@@ -2,17 +2,18 @@
 <%@ page import="com.fys.blog.pojo.Post_" %>
 <%@   page contentType="text/html;charset=utf-8" %>
 <%@ page pageEncoding="utf-8" %>
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 <%
     List<Post_> posts = (List<Post_>) request.getAttribute("posts");
 %>
 <html>
 <head>
     <title>首页</title>
+    <script src="${pageContext.request.contextPath}/js/project/index.js"></script>
 </head>
 <style>
-    .post-center{
-        height:100vh;
+    .post-center {
+        height: 100vh;
     }
 </style>
 <body>
@@ -26,27 +27,38 @@
 <div>
     <table class="table-hover table-warning" border="1">
         <tr>
-            <td >标题</td>
-            <td >内容</td>
-            <td >作者</td>
-            <td >发帖时间</td>
-            <%if(null != level && level.equals("admin")){%>
+            <td>标题</td>
+            <td>内容</td>
+            <td>作者</td>
+            <td>发帖时间</td>
+            <%if ("admin".equals(level)) {%>
             <td>操作</td>
             <%}%>
         </tr>
         <%
             if (null != posts) {
-                for (Post_ post : posts) {%>
+                for (Post_ post : posts) {
+                    if (post.getRoot_id().equals("0")) {
+        %>
+
         <tr>
-            <td><a href="${pageContext.request.contextPath}/post?id=<%=post.getId()%>"><%=post.getTitle()%></a></td>
-            <td><%=post.getContent()%></td>
-            <td><a href="#"><%=post.getUser_id()%></a></td>
-            <td><%=post.getPost_time()%></td>
-            <%if(null != level && level.equals("admin")){%>
-            <td><a href="#">删除</a>&nbsp;<a href="#">置顶</a></td>
+            <td><a href="${pageContext.request.contextPath}/post?id=<%=post.getId()%>"><%=post.getTitle()%>
+            </a></td>
+            <td><%=post.getContent()%>
+            </td>
+            <td><a href="#"><%=post.getUser_id()%>
+            </a></td>
+            <td><%=post.getPost_time()%>
+            </td>
+            <%if (("admin".equals(level)) || (post.getUser_id().equals(nickName))) {%>
+            <td><%--<a href="${pageContext.request.contextPath}/deleteRoot?id=<%=post.getId()%>">删除</a>--%><button class="btn-danger btn-sm" value="id=<%=post.getId()%>" id="delete" onclick="return confirm('删除后无法恢复，确定吗?')" >删除</button>&nbsp;<button class="btn-sm btn-danger">置顶</button></td>
             <%}%>
         </tr>
-        <%} }%>
+        <%
+                    }
+                }
+            }
+        %>
     </table>
 </div>
 

@@ -220,4 +220,46 @@ public class FBlogServiceImpl implements FBlogService {
     public String getLevelByUsername(String username) {
         return fBlogDao.getLevelByUsername(username);
     }
+
+    /**
+     * 删除
+     */
+    public String delete(String id, String root_id){
+        if (!isNullOrWhile(id) && !isNullOrWhile(root_id)) {
+            //先删除所有的子节点
+            deleteChild(id);
+            deletePost(id, root_id);
+            return "删除成功!";
+        }
+        return "删除失败！";
+    }
+
+    /**
+     * 删除贴子
+     * @param id
+     * @param root_id
+     * @return
+     */
+    @Override
+    public void deletePost(String id, String root_id) {
+        fBlogDao.deletePost(id, root_id);
+    }
+
+    /**
+     * 删除所有的子节点
+     * @param id 父节点id
+     */
+    @Override
+    public void deleteChild(String id) {
+        fBlogDao.deleteChild(id);
+    }
+
+    /**
+     *  根据id删除贴子
+     * @param id
+     */
+    @Override
+    public void deleteById(String id) {
+        fBlogDao.deleteById(id);
+    }
 }

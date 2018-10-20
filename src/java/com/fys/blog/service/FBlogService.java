@@ -110,4 +110,29 @@ public interface FBlogService {
      * @return
      */
     String getLevelByUsername(String username);
+
+    /**
+     * 删除
+     */
+    String delete(String id, String root_id);
+
+    /**
+     * 删除贴子
+     * @param id
+     * @param root_id
+     * @return
+     */
+    void deletePost(String id, String root_id);
+
+    /**
+     * 删除所有的子节点
+     * @param id
+     */
+    void deleteChild(String id);
+
+    /**
+     *  根据id删除贴子
+     * @param id
+     */
+    void deleteById(String id);
 }

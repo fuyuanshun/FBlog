@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 import static com.fys.blog.util.CheckInfo.isNullOrWhile;
@@ -99,9 +101,38 @@ public class FBlogController {
     @RequestMapping("/post")
     public String post(HttpServletRequest req, @RequestParam("id")String id) {
         Post_ post = fBlogService.post_detail(id);
+        List<Post_> posts =  fBlogService.selectPost();
         if (null != post) {
             req.setAttribute("post", post);
         }
+        if (null != posts) {
+            req.setAttribute("posts", posts);
+        }
         return "post_detail";
+    }
+
+    /**
+     * 删除非根节点的贴子
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String delete(@RequestParam("id")String id, @RequestParam("root_id")String root_id) {
+        return fBlogService.delete(id, root_id);
+    }
+
+    /**
+     * 删除根节点贴子
+     */
+    @RequestMapping("/deleteRoot")
+    @ResponseBody
+    public String deleteRoot(@RequestParam("id")String id) {
+        if (!isNullOrWhile(id)) {
+            fBlogService.deleteChild(id);
+            fBlogService.deleteById(id);
+            return "删除成功!";
+        }
+        return "删除失败！";
     }
 }

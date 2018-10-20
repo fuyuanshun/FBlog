@@ -1,10 +1,10 @@
-$(function(){
-    $("#delete").click(function(){
-        var json = $("#delete").val();
+$(function () {
+    $("#submit").click(function(){
+        var json = $("#submit").val();
         $.ajax({
-            url : "/FBlog/deleteRoot",
-            data : json,
+            url: "/FBlog/delete",
             type : "POST",
+            data : json,
             async : true,
             success : function(data){
                 alert(data);
@@ -12,4 +12,4 @@ $(function(){
             }
         })
     })
-})
+});

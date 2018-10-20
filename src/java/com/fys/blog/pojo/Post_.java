@@ -6,8 +6,16 @@ public class Post_ {
     private String content;
     private String user_id;
     private String post_time;
+    private String root_id;
     private User user;
 
+    public String getRoot_id() {
+        return root_id;
+    }
+
+    public void setRoot_id(String root_id) {
+        this.root_id = root_id;
+    }
 
     public User getUser() {
         return user;
