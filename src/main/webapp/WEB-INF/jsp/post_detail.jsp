@@ -25,6 +25,7 @@
             <%=post.getContent()%>
         </textarea>
         <button class="btn-primary btn-lg float-right">回复</button>
+        <button type="submit" id="delete" class="btn-danger btn-lg float-right" value="id=<%=post.getId()%>" id="delete">删除主题</button>
     </div>
     <div>
         <%
@@ -40,8 +41,7 @@
         </textarea>
         <%
                         if(("admin".equals(level)) || (p.getUser_id().equals(nickName))){%>
-       <%-- <a href="${pageContext.request.contextPath}/delete?id=<%=p.getId()%>&root_id=<%=p.getRoot_id()%>" onclick="return confirm('删除后不可恢复，确定吗?')" id="submit">删除</a>--%>
-        <button type="submit" onclick="return confirm('删除后不可恢复，确定吗?')" id="submit" value="id=<%=p.getId()%>&root_id=<%=p.getRoot_id()%>">删除</button>
+        <button class="float-right btn-danger" type="submit" id="submit" value="id=<%=p.getId()%>">删除</button>
                         <%}
                     }
                 }

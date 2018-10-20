@@ -222,44 +222,40 @@ public class FBlogServiceImpl implements FBlogService {
     }
 
     /**
-     * 删除
-     */
-    public String delete(String id, String root_id){
-        if (!isNullOrWhile(id) && !isNullOrWhile(root_id)) {
-            //先删除所有的子节点
-            deleteChild(id);
-            deletePost(id, root_id);
-            return "删除成功!";
-        }
-        return "删除失败！";
-    }
-
-    /**
-     * 删除贴子
-     * @param id
-     * @param root_id
-     * @return
-     */
-    @Override
-    public void deletePost(String id, String root_id) {
-        fBlogDao.deletePost(id, root_id);
-    }
-
-    /**
-     * 删除所有的子节点
-     * @param id 父节点id
-     */
-    @Override
-    public void deleteChild(String id) {
-        fBlogDao.deleteChild(id);
-    }
-
-    /**
      *  根据id删除贴子
      * @param id
      */
     @Override
     public void deleteById(String id) {
         fBlogDao.deleteById(id);
+    }
+
+    /**
+     * 根据id查询所有的子节点
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Post_> selectById(String id) {
+        return fBlogDao.selectById(id);
+    }
+
+    /**
+     * 删除指定id的所有子节点
+     * @param id
+     */
+    @Override
+    public void deleteAll(String id) {
+        List<Post_> posts = selectById(id);
+        if (posts.size() == 0) {
+            deleteById(id);
+        } else {
+            for (Post_ post : posts) {
+                deleteById(post.getId());
+                deleteAll(post.getId());
+            }
+        }
+        //删除父节点
+        deleteById(id);
     }
 }

@@ -51,7 +51,11 @@
             <td><%=post.getPost_time()%>
             </td>
             <%if (("admin".equals(level)) || (post.getUser_id().equals(nickName))) {%>
-            <td><%--<a href="${pageContext.request.contextPath}/deleteRoot?id=<%=post.getId()%>">删除</a>--%><button class="btn-danger btn-sm" value="id=<%=post.getId()%>" id="delete" onclick="return confirm('删除后无法恢复，确定吗?')" >删除</button>&nbsp;<button class="btn-sm btn-danger">置顶</button></td>
+            <td>
+                <button type="submit" class="btn-danger btn-sm" value="id=<%=post.getId()%>" id="delete">删除
+                </button>&nbsp;
+                <button class="btn-sm btn-danger">置顶</button>
+            </td>
             <%}%>
         </tr>
         <%

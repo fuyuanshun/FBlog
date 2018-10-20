@@ -83,18 +83,13 @@
         select level from user where username = #{username};
     </select>
 
-    <!-- 删除贴子 -->
-    <delete id="deletePost" parameterType="String">
-      delete from post_ where id = #{id} and root_id = #{root_id};
-    </delete>
-
-    <!-- 删除所有的子节点 -->
-    <delete id="deleteChild" parameterType="String">
-      delete from post_ where root_id = #{id};
-    </delete>
-
     <!-- 根据id删除贴子 -->
     <delete id="deleteById" parameterType="String">
       delete from post_ where id = #{id};
     </delete>
+
+    <!-- 根据id查询所有的子节点 -->
+    <select id="selectById" parameterType="String" resultType="Post_">
+        select * from post_ where root_id = #{id};
+    </select>
 </mapper>

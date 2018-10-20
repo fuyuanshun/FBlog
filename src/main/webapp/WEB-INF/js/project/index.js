@@ -1,8 +1,9 @@
 $(function(){
-    $("#delete").click(function(){
-        var json = $("#delete").val();
+    $("button#delete").click(function(){
+        if(confirm('删除后无法恢复，确定吗？')){
+        var json = $(this).val();
         $.ajax({
-            url : "/FBlog/deleteRoot",
+            url : "/FBlog/deleteAll",
             data : json,
             type : "POST",
             async : true,
@@ -11,5 +12,5 @@ $(function(){
                 location.reload();
             }
         })
-    })
+    }})
 })

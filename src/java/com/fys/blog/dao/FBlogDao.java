@@ -92,22 +92,17 @@ public interface FBlogDao {
     String getLevelByUsername(String username);
 
     /**
-     * 删除贴子
-     * @param id
-     * @param root_id
-     * @return
-     */
-    void deletePost(@Param("id") String id, @Param("root_id") String root_id);
-
-    /**
-     * 删除所有的子节点
-     * @param id
-     */
-    void deleteChild(String id);
-
-    /**
      *  根据id删除贴子
      * @param id
      */
     void deleteById(String id);
+
+
+    /**
+     * 根据id查询所有的子节点
+     *
+     * @param id
+     * @return
+     */
+    List<Post_> selectById(String id);
 }

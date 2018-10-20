@@ -5,6 +5,7 @@ import com.fys.blog.service.FBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -112,27 +113,15 @@ public class FBlogController {
     }
 
     /**
-     * 删除非根节点的贴子
+     * 删除指定id以及所有子节点的贴子.
      * @param id
      * @return
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value="/deleteAll", method = RequestMethod.POST)
     @ResponseBody
-    public String delete(@RequestParam("id")String id, @RequestParam("root_id")String root_id) {
-        return fBlogService.delete(id, root_id);
+    public String deleteAll(@RequestParam("id")String id) {
+        fBlogService.deleteAll(id);
+        return "删除成功!";
     }
 
-    /**
-     * 删除根节点贴子
-     */
-    @RequestMapping("/deleteRoot")
-    @ResponseBody
-    public String deleteRoot(@RequestParam("id")String id) {
-        if (!isNullOrWhile(id)) {
-            fBlogService.deleteChild(id);
-            fBlogService.deleteById(id);
-            return "删除成功!";
-        }
-        return "删除失败！";
-    }
 }

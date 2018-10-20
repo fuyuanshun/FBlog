@@ -26,7 +26,7 @@
             <%if (null == nickName) {%>
             <a href="${pageContext.request.contextPath}/login">登陆</a>
             <%} else {%>尊敬的<%if(level.equals("admin")){%> 管理员<%}else{%>用户<%}%>：<%=nickName%>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/logout">退出登录</a>
+            <a href="${pageContext.request.contextPath}/logout" onclick="return confirm('确定退出吗?')">退出登录</a>
             <%}%>
             &nbsp;&nbsp;&nbsp;
             <a href="${pageContext.request.contextPath}/register" >还没有用户名？免费注册一个</a>
