@@ -26,10 +26,13 @@
 <div>
     <table class="table-hover table-warning" border="1">
         <tr>
-            <td class="text-muted col-sm-9">标题</td>
-            <td class="text-muted col-sm-9">内容</td>
-            <td class="text-muted col-sm-9">作者</td>
-            <td class="text-muted col-sm-9">发帖时间</td>
+            <td >标题</td>
+            <td >内容</td>
+            <td >作者</td>
+            <td >发帖时间</td>
+            <%if(level.equals("admin")){%>
+            <td>操作</td>
+            <%}%>
         </tr>
         <%
             if (null != blogs) {
@@ -37,8 +40,11 @@
         <tr>
             <td><a href="${pageContext.request.contextPath}/post?id=<%=blog.getId()%>"><%=blog.getTitle()%></a></td>
             <td><%=blog.getContent()%></td>
-            <td><%=blog.getUser_id()%></td>
+            <td><a href="#"><%=blog.getUser_id()%></a></td>
             <td><%=blog.getPost_time()%></td>
+            <%if(level.equals("admin")){%>
+            <td><a href="#">删除</a>&nbsp;<a href="#">置顶</a></td>
+            <%}%>
         </tr>
         <%} }%>
     </table>

@@ -66,4 +66,27 @@ public interface FBlogDao {
      * @return
      */
     String login_nickname(@Param("nickname")String nickname, @Param("password") String password);
+
+
+    /**
+     * 根据帖子id查询贴子的详细内容
+     * @param id id
+     * @return
+     */
+    Blog post_detail(String id);
+
+
+    /**
+     * 根据社区昵称查询权限等级
+     * @param nickname 社区昵称
+     * @return
+     */
+    String getLevelByNickname(String nickname);
+
+    /**
+     * 根据用户账号查询权限等级
+     * @param username 用户账号
+     * @return
+     */
+    String getLevelByUsername(String username);
 }

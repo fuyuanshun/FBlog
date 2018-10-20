@@ -1,5 +1,7 @@
 package com.fys.blog.pojo;
 
+import java.util.List;
+
 public class User {
     private String id;
     private String username;
@@ -8,13 +10,22 @@ public class User {
     private String lastLogin;
     private String blogId;
     private String birthday;
-    private Blog blog;
+    private List<Blog> blog;
+    private String level;
 
-    public Blog getBlog() {
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public List<Blog> getBlog() {
         return blog;
     }
 
-    public void setBlog(Blog blog) {
+    public void setBlog(List<Blog> blog) {
         this.blog = blog;
     }
 

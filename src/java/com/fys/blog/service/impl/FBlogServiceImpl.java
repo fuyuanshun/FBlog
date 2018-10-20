@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static com.fys.blog.util.CheckInfo.isNullOrWhile;
@@ -133,12 +134,16 @@ public class FBlogServiceImpl implements FBlogService {
             if (null != login(username, password) || null != login_nickname(username, password)) {
                 //查询是否存在
                 if (null == selectNameByUsername(username)) {
-                    req.getSession().setAttribute("nickName", username);
+                    HttpSession session = req.getSession();
+                    session.setAttribute("nickName", username);
+                    session.setAttribute("level", getLevelByNickname(username));
                     updateLoginTime(username);
                     return "success";
                 } else {
+                    HttpSession session = req.getSession();
                     String nickName = selectNameByUsername(username);
-                    req.getSession().setAttribute("nickName", nickName);
+                    session.setAttribute("nickName", nickName);
+                    session.setAttribute("level", getLevelByNickname(nickName));
                     updateLoginTime(username);
                     return "success";
                 }
@@ -184,5 +189,35 @@ public class FBlogServiceImpl implements FBlogService {
     @Override
     public String login_nickname(String nickname, String password) {
         return fBlogDao.login_nickname(nickname, password);
+    }
+
+    /**
+     * 根据贴子id查询贴子的详细内容
+     * @param id
+     * @return
+     */
+    @Override
+    public Blog post_detail(String id) {
+        return fBlogDao.post_detail(id);
+    }
+
+    /**
+     * 根据社区昵称查询权限等级
+     * @param nickname 社区昵称
+     * @return
+     */
+    @Override
+    public String getLevelByNickname(String nickname) {
+        return fBlogDao.getLevelByNickname(nickname);
+    }
+
+    /**
+     * 根据用户账号查询权限等级
+     * @param username 用户账号
+     * @return
+     */
+    @Override
+    public String getLevelByUsername(String username) {
+        return fBlogDao.getLevelByUsername(username);
     }
 }

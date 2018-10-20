@@ -97,7 +97,11 @@ public class FBlogController {
     }
 
     @RequestMapping("/post")
-    public String post(@RequestParam("id")String id) {
-        return "";
+    public String post(HttpServletRequest req, @RequestParam("id")String id) {
+        Blog blog = fBlogService.post_detail(id);
+        if (null != blog) {
+            req.setAttribute("blog", blog);
+        }
+        return "post_detail";
     }
 }

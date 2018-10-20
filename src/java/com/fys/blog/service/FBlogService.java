@@ -91,4 +91,24 @@ public interface FBlogService {
      * @return
      */
     String login_nickname(String nickname, String password);
+
+    /**
+     * 根据贴子id查询详细贴子
+     */
+    Blog post_detail(String id);
+
+    /**
+     * 根据社区昵称查询权限等级
+     * @param nickname 社区昵称
+     * @return
+     */
+    String getLevelByNickname(String nickname);
+
+
+    /**
+     * 根据用户账号查询权限等级
+     * @param username 用户账号
+     * @return
+     */
+    String getLevelByUsername(String username);
 }
