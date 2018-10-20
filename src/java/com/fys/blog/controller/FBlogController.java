@@ -124,7 +124,7 @@ public class FBlogController {
     }
 
     /**
-     * 添加贴子
+     * 回复贴子
      * @return
      */
     @RequestMapping(value="/addPost", method = RequestMethod.POST)
@@ -133,4 +133,16 @@ public class FBlogController {
         return fBlogService.addPost(id, title, content, nickname);
     }
 
+    /**
+     * 发新帖子
+     * @param title
+     * @param content
+     * @param nickname
+     * @return
+     */
+    @RequestMapping(value="/newPost", method = RequestMethod.POST)
+    @ResponseBody
+    public String newPost(@RequestParam("title")String title, @RequestParam("content")String content, @RequestParam("nickname")String nickname) {
+        return fBlogService.newPost(title, content, nickname);
+    }
 }

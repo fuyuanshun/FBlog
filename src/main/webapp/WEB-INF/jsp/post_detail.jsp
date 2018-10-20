@@ -40,18 +40,17 @@
             回帖时间：<%=p.getPost_time()%>
             内容：<%=p.getContent()%>
         </textarea>
+
+        <%--<input type="hidden" id="id2" >--%>
+        <button type="button" class="float-right btn-primary" data-toggle="modal" data-target="#myModal" id="submit2" value="<%=p.getId()%>" >回复</button>
         <%
                         if(("admin".equals(level)) || (p.getUser_id().equals(nickName))){%>
         <button class="float-right btn-danger" type="submit" id="submit" value="id=<%=p.getId()%>">删除</button>
-                        <%}
-                    }
-                }
-            }
-        %>
+                        <%} } } }%>
     </div>
 </div>
 
-<!-- 模态框 -->
+<!-- 模态框1 -->
 <div class="modal fade" id="myModal" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">

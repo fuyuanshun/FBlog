@@ -104,4 +104,11 @@
     <select id="selectIdByNickname" parameterType="String" resultType="String">
         select id from user where nickname = #{nickname};
     </select>
+
+    <!-- 发新帖子 -->
+    <insert id="newPost" parameterType="String">
+      insert into post_ (title, content, user_id, post_time, root_id)
+      values
+      (#{title}, #{content}, #{user_id}, now(), 0);
+    </insert>
 </mapper>

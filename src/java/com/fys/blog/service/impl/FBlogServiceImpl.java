@@ -280,4 +280,24 @@ public class FBlogServiceImpl implements FBlogService {
         }
         return "回复失败!";
     }
+
+    /**
+     * 发新帖子
+     * @param title
+     * @param content
+     * @param nickname
+     * @return
+     */
+    @Override
+    public String newPost(String title, String content, String nickname) {
+        if ("".equals(title) || "".equals(content) || "".equals(nickname)) {
+            return "不能为空！";
+        }
+        String user_id = fBlogDao.selectIdByNickname(nickname);
+        if (null != user_id) {
+            fBlogDao.newPost(title, content, user_id);
+            return "success";
+        }
+        return "发帖失败！";
+    }
 }

@@ -117,4 +117,12 @@ public interface FBlogDao {
      * @return
      */
     String selectIdByNickname(String nickname);
+
+    /**
+     * 发新贴子
+     * @param title
+     * @param content
+     * @param user_id
+     */
+    void newPost(@Param(("title")) String title, @Param("content") String content, @Param("user_id") String user_id);
 }

@@ -56,4 +56,21 @@ $(function () {
             }
         });
     })
+
+
+    $("button#submit2").click(function(){
+            var id = $(this).val();
+            var nickname = $("#nickname").val();
+        alert(id);
+           /* $.ajax({
+                url: "/FBlog/deleteAll",
+                type : "POST",
+                data : json,
+                async : true,
+                success : function(data){
+                    alert(data);
+                    location.reload();
+                }
+            })*/
+        })
 });

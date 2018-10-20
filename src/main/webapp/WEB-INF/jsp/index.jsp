@@ -22,7 +22,7 @@
     <a href="" class="btn-primary">我的帖子</a>
     <a href="" class="btn-primary">精华</a>
     <a href="" class="btn-primary">热门</a>
-    <button class="btn-primary">发帖子</button>
+    <button type="button" class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="button">发帖子</button>
 </div>
 <div class="post-center justify-content-center align-items-center row">
     <table class="table-hover table-warning table">
@@ -67,31 +67,26 @@
 </div>
 
 
-<!-- 模态框 -->
+<!-- 模态框1 -->
 <div class="modal fade" id="myModal" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <!-- 模态框头部 -->
             <div class="modal-header">
-                <h4 class="modal-title">确认信息</h4>
+                <h4 class="modal-title">发帖</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- 模态框主体 -->
             <div class="modal-body">
                 <div>
-                    <label class="text-muted">名称:</label>
-                    <input type="text" id="name" class="form-control" readonly>
-                    <label class="col-form-label">宿舍楼:</label>
-                    <input type="text" id="floor" class="form-control" readonly>
-                    <label class="col-form-label">寝室号:</label>
-                    <input type="text" id="room" class="form-control" readonly>
-                    <label class="col-form-label">联系电话:</label>
-                    <input type="text" id="phone" class="form-control" readonly>
-                    <label class="col-form-label">故障信息:</label>
-                    <input <%--cols="30" rows="10"--%> type="text" id="info" class="form-control" readonly />
-                    <span class="text-danger">注: 如想修改信息，请返回上个页面修改</span>
+                    <input type="hidden" id="nickname" value="<%=nickName%>">
+                    <label class="col-form-label">标题:</label>
+                    <input type="text" id="title" class="form-control"/>
+                    <label class="col-form-label">内容:</label><br>
+                    <textarea id="content" rows="20" cols="60">
+                    </textarea>
                 </div>
             </div>
             <!-- 模态框底部 -->
@@ -102,6 +97,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

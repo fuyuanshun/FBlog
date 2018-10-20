@@ -136,4 +136,13 @@ public interface FBlogService {
      * 回复贴子
      */
     String addPost(String id, String title, String content, String nickname);
+
+    /**
+     * 发新帖子
+     * @param title
+     * @param content
+     * @param nickname
+     * @return
+     */
+    String newPost(String title, String content, String nickname);
 }
