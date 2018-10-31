@@ -96,6 +96,9 @@ function checkUsername() {
         type: "POST",
         data: "username=" + username,
         success: function (data) {
+            if (data.length > 120) {
+                return;
+            }
             if (data === "用户名可以使用") {
                 $("#usernameLabel").attr("class", "text-success");
                 $("#usernameLabel").text(data);
@@ -121,6 +124,9 @@ function checkNickname() {
         type: "POST",
         data: "nickname=" + nickname,
         success: function (data) {
+            if (data.length > 120) {
+                return;
+            }
             if (data === "该社区昵称可以使用") {
                 $("#nicknameLabel").attr("class", "text-success");
                 $("#nicknameLabel").text(data);

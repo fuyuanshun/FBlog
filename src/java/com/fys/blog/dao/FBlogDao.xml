@@ -18,7 +18,6 @@
            <id property="id" column="id"/>
            <result property="nickname" column="nickname"/>
            <result property="lastLogin" column="last_login"/>
-           <result property="postId" column="post_id"/>
            <result property="birthday" column="birthday"/>
            <result property="level" column="level"/>
         </association>
@@ -43,7 +42,7 @@
 
     <!-- 查询用户名和密码是否存在于同一条记录中，用于登陆 -->
     <select id="login" parameterType="String" resultType="String">
-        select id,username,password,nickname,last_login,post_id,birthday from user where
+        select id,username,password,nickname,last_login,birthday from user where
         username = #{username} and password = #{password}
     </select>
 
@@ -64,13 +63,13 @@
 
     <!-- 查询社区昵称和密码是否在同一条记录中，用于登陆-->
     <select id="login_nickname" parameterType="String" resultType="String">
-        select id,nickname,password,nickname,last_login,post_id,birthday from user where
+        select id,nickname,password,nickname,last_login,birthday from user where
         nickname = #{nickname} and password = #{password}
     </select>
 
     <!-- 根据id查询贴子详细内容 -->
     <select id="post_detail" parameterType="String" resultMap="PostsMap">
-        select post.id, post.title, post.content, u.nickname, post_time, u.last_login, u.post_id, u.birthday, u.level from post_ as post join user as u on post.user_id = u.id where post.id = #{id};
+        select post.id, post.title, post.content, u.nickname, post_time, u.last_login, u.birthday, u.level from post_ as post join user as u on post.user_id = u.id where post.id = #{id};
     </select>
 
     <!-- 根据社区昵称查询用户权限等级 -->

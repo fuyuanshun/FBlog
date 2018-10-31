@@ -8,7 +8,6 @@ username varchar(30) not null,
 password varchar(30) not null,
 nickname varchar(50) not null,
 last_login datetime default null,
-post_id int(11) not null,
 birthday date not null,
 level varchar(20) not null
 );

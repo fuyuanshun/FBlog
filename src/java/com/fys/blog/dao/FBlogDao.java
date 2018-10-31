@@ -4,7 +4,6 @@ import com.fys.blog.pojo.Post_;
 import com.fys.blog.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="border-bottom: 2px solid red; margin-bottom: 100px;">
     <div class="outer">
         <p>
             <a href="${pageContext.request.contextPath}/">
@@ -33,7 +33,5 @@
         </p>
     </div>
 </div>
---------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------
 </body>
 </html>
